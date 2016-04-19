@@ -37,10 +37,10 @@ describe('App', function() {
     request.post({
       url: apiUrl,
       form: {
-        url: 'http://google.com/#q=asdf'
+        url: 'http://google.com/'
       }
     }, function(error, response, body) {
-      expect(response).toBe(null);
+      expect(response.statusCode).toBe(200);
       done();
     });
   });

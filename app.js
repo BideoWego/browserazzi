@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var screenshot = require('./lib/screenshot');
+var bodyParser = require('body-parser');
 
 // ----------------------------------------
 // Config
@@ -9,7 +10,7 @@ var screenshot = require('./lib/screenshot');
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
-
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // ----------------------------------------
 // Routes
@@ -19,15 +20,18 @@ app.get('/', function(request, response) {
   response.render('index');
 });
 
-app.get('/api/v1/screenshot', function(request, response) {
-  console.log('query', request.query);
-  screenshot.config(request.query);
+app.post('/api/v1/screenshot', function(request, response) {
+  screenshot.config(request.body);
 
   screenshot(function(path) {
     response.sendFile(path, { root: __dirname });
+    response.end(function() {
+      screenshot.remove(path);
+    });
   }, function(error) {
     response.json({ error: error });
   });
+
 });
 
 
