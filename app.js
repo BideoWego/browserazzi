@@ -23,10 +23,10 @@ app.get('/', function(request, response) {
 app.post('/api/v1/screenshot', function(request, response) {
   screenshot.config(request.body);
 
-  screenshot(function(path) {
-    response.sendFile(path, { root: __dirname });
-    response.end(function() {
-      screenshot.remove(path);
+  screenshot(function(data) {
+    response.render('screenshot', {
+      data: data,
+      url: request.body.url
     });
   }, function(error) {
     response.json({ error: error });
