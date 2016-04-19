@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var screenshot = require('./lib/screenshot');
 
 // ----------------------------------------
 // Config
@@ -19,7 +20,28 @@ app.get('/', function(request, response) {
 });
 
 app.get('/api/v1/screenshot', function(request, response) {
-  response.send('I just took your picture! Haha! Ok.. I kid...');
+  console.log('query', request.query);
+  screenshot.config(request.query);
+
+  screenshot(function(path) {
+    response.sendFile(path, { root: __dirname });
+  }, function(error) {
+    response.json({ error: error });
+  });
+});
+
+
+// ----------------------------------------
+// Errors
+// ----------------------------------------
+
+app.use(function(request, response, next) {
+  response.status(404).send('Sorry cant find that!');
+});
+
+app.use(function(error, request, response, next) {
+  console.error(error.stack);
+  response.status(500).send('Something broke!');
 });
 
 
