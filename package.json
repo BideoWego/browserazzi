@@ -4,7 +4,8 @@
   "description": "A paparazzi for your browser that takes screenshots of websites given a URL",
   "main": "app.js",
   "scripts": {
-    "test": "jasmine-node spec --verbose"
+    "test": "jasmine-node spec --verbose",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
