@@ -19,6 +19,7 @@
   "dependencies": {
     "atob": "^2.0.3",
     "body-parser": "^1.15.0",
+    "cors": "^2.7.1",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "md5": "^2.1.0",
