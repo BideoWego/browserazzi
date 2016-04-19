@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - '5'
+  - '5.1'
+deploy:
+  provider: heroku
+  api_key:
+    secure: TW3GOYm5A9hmA8I1TyXQ0Zo7wVavaM/VTwV4z2Rq/oMQviGekUMO6fK3ny7VVuY7rp+XKoMZbNu9gYbfQozGPoHEBJSyXnMK6xOP4tNUu+W3ksw4JjHPecHbbSipNfzuFax8aJfkoZzh78UeY1JAkSVM5J7bG4hLXw+U4NVEzx2oMaeGXJfAeH3krYI7MkBh/EqBKh65gU+c0LOE5MUsm5VMeExcnKnCwM94QQwaCiFRZ3VbJwS4ksAiaPVaUYC9bfc6q0pkfNmNED71z/TbyrgbFy9tzqt7WV06/Kqxc1TFJ3YzJaBbuJ16T4cUd8oM1yB8jMvZMdjJmXSxtEH/fGnoB9t4gbbA9xTt5DzDlk61deMn9+KGSFFK8AV2vzu+JUq0TQaTdSwUQIEau48nydwmbSvWVhZai1KYajNiHtaIEa7MURwqF+UaCHCDZH/O4+r5ErOk95ZQEiQWpzHfwBodyNs0xoN9sRIlmel83CWrDXSDrNh3sMaP6MOUZmtPFKvDACKiEjHKpOTZEOKyXVmLS+0WbXriQqsantoQg4D2f3vrdGnMTq3sz9p6PPjm0Eyv7gsSEIXBY2s3N93s/ho+2uN0hl3+GrdMKR2wqc+eFJM3iw4h4U/es1D5mV5WGEiz4/7WUZnBpwf+l2gt1ArQ4O6ZsjVU76QlH75PN7g=
+  app: browserazzi
+  on:
+    repo: BideoWego/browserazzi
