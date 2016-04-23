@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Browserazzi<%= locals.title ? '| ' + title : '' %></title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/vendor.css">
+    <link rel="stylesheet" href="/assets/style.css">
+  </head>
+  <body id="<%= view ? view.replace(/\//, '-') : 'home' %>">
+
+    <header class="page-header text-center">
+      <h1>
+        <a href="/">Browserazzi</a>
+      </h1>
+      <div id="banner" class="text-light bg-cover-image">
+        <br>
+        <h2>Take a Screenshot of a URL</h2>
+      </div>
+    </header>
+
+    <%- include('../shared/flash') %>
+
+    <main class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <%- include('../' + view) %>
+        </div>
+      </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="/assets/vendor.js"></script>
+  </body>
+</html>
+

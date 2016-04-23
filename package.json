@@ -17,13 +17,16 @@
   "author": "bideowego@gmail.com",
   "license": "MIT",
   "dependencies": {
-    "atob": "^2.0.3",
     "body-parser": "^1.15.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.1",
     "cors": "^2.7.1",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
+    "express-session": "^1.13.0",
     "md5": "^2.1.0",
-    "phantom": "^2.0.10"
+    "phantom": "^2.0.10",
+    "validator": "^5.2.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

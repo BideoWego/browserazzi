@@ -1,3 +1,6 @@
+.text-light {
+  color: #eee; }
+
 .bg-cover-image {
   background-attachment: fixed;
   background-position: center bottom;

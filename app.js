@@ -3,6 +3,10 @@ var app = express();
 var screenshot = require('./lib/screenshot');
 var bodyParser = require('body-parser');
 var cors = require('cors');
+var validator = require('validator');
+var flash = require('connect-flash');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
 
 
 // ----------------------------------------
@@ -14,6 +18,9 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
+app.use(cookieParser("Yeah no maybe so..."));
+app.use(session({ cookie: { maxAge: 60 * 60 * 24 } }));
+app.use(flash());
 
 
 // ----------------------------------------
@@ -21,20 +28,31 @@ app.use(cors());
 // ----------------------------------------
 
 app.get('/', function(request, response) {
-  response.render('index');
+  response.render('layouts/application', {
+    view: 'screenshots/form',
+    flash: {
+      danger: request.flash('error')
+    }
+  });
 });
 
 app.post('/api/v1/screenshot', function(request, response) {
-  screenshot.config(request.body);
 
-  screenshot(function(data) {
-    response.render('screenshot', {
-      data: data,
-      url: request.body.url
+  if (!validator.isURL(request.body.url)) {
+    request.flash('error', 'Not a URL');
+    response.redirect('/');
+  } else {
+    screenshot.config(request.body);
+    
+    screenshot(function(data) {
+      response.render('screenshots/screenshot', {
+        data: data,
+        title: 'Screenshot of: ' + request.body.url
+      });
+    }, function(error) {
+      response.json({ error: error });
     });
-  }, function(error) {
-    response.json({ error: error });
-  });
+  }
 
 });
 
@@ -44,12 +62,18 @@ app.post('/api/v1/screenshot', function(request, response) {
 // ----------------------------------------
 
 app.use(function(request, response, next) {
-  response.status(404).send('Sorry cant find that!');
+  response.status(404)
+    .render('layouts/application', {
+      view: 'errors/404'
+    });
 });
 
 app.use(function(error, request, response, next) {
   console.error(error.stack);
-  response.status(500).send('Something broke!');
+  response.status(500)
+    .render('layouts/application', {
+      view: 'errors/500'
+    });
 });
 
 

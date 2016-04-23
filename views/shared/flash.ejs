@@ -1,0 +1,16 @@
+<%
+if (locals.flash) {
+  for (var key in flash) {
+    if (flash[key].length) {
+%>
+
+      <div class="alert alert-<%= key %> text-center">
+        <%= flash[key].join(', ') %>
+      </div>
+
+<%
+    }
+  }
+}
+%>
+

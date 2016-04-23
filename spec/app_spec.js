@@ -44,6 +44,13 @@ describe('App', function() {
       done();
     });
   });
+
+  it('returns a status code of 404 when URL is not found', function(done) {
+    request.get(baseUrl + '/asdf', function(error, response, body) {
+      expect(response.statusCode).toBe(404);
+      done();
+    });
+  });
 });
 
 
