@@ -8,7 +8,6 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 
-
 // ----------------------------------------
 // Config
 // ----------------------------------------
@@ -19,7 +18,12 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(cookieParser("Yeah no maybe so..."));
-app.use(session({ cookie: { maxAge: 60 * 60 * 24 } }));
+app.use(session({
+  cookie: { maxAge: 60 * 60 * 24 },
+  secret: "Ah ah ah, you didn't say the magic word",
+  resave: true,
+  saveUninitialized: true
+}));
 app.use(flash());
 
 
@@ -45,10 +49,10 @@ app.post('/api/v1/screenshot', function(request, response) {
     screenshot.config(request.body);
     
     screenshot(function(data) {
-      response.render('screenshots/screenshot', {
-        data: data,
-        title: 'Screenshot of: ' + request.body.url
-      });
+      var image = new Buffer(data, 'base64');
+      response.writeHead(200, { 'Content-Type': 'image/jpeg' });
+      response.write(image);
+      response.end();
     }, function(error) {
       response.json({ error: error });
     });
