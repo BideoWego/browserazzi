@@ -24,9 +24,9 @@
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
-    "md5": "^2.1.0",
     "phantom": "^2.0.10",
-    "validator": "^5.2.0"
+    "validator": "^5.2.0",
+    "yargs": "^4.6.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
