@@ -9,3 +9,5 @@ deploy:
   app: browserazzi
   on:
     repo: BideoWego/browserazzi
+  env:
+    - SECRET=af6675282c2d46ca7b17c816ce14a5e3
