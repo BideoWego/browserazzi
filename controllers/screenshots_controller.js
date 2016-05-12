@@ -28,10 +28,7 @@ ScreenshotsController = {
         if (request.body.format === 'base64') {
           response.write(data);
         } else if (request.body.format === 'image_src') {
-          response.render('screenshots/screenshot', {
-            title: 'Screenshot of: ' + request.body.url,
-            data: data
-          });
+          response.write('data:image/jpeg;base64,' + data);
         } else {
           var image = new Buffer(data, 'base64');
           response.writeHead(200, { 'Content-Type': 'image/jpeg' });

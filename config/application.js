@@ -1,3 +1,4 @@
+var _ = require('lodash');
 var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
@@ -5,6 +6,8 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var argv = require('yargs').argv;
+var expressLogging = require('express-logging');
+var logger = require('logops');
 
 
 // ----------------------------------------
@@ -28,6 +31,24 @@ var Application = function() {
     saveUninitialized: true
   }));
   app.use(flash());
+
+  if (app.settings.env === 'test') {
+    logger.setLevel('FATAL');
+  }
+
+  app.use(expressLogging(logger));
+  app.use(function(request, response, next) {
+    if (!_.isEmpty(request.params)) {
+      logger.info('Params: %j', request.params);
+    }
+    if (!_.isEmpty(request.query)) {
+      logger.info('Query: %j', request.query);
+    }
+    if (!_.isEmpty(request.body)) {
+      logger.info('Body: %j', request.body);
+    }
+    next();
+  });
 
   return app;
 };

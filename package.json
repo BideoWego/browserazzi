@@ -24,7 +24,10 @@
     "dotenv": "^2.0.0",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
+    "express-logging": "^1.1.0",
     "express-session": "^1.13.0",
+    "lodash": "^4.12.0",
+    "logops": "^1.0.0-alpha.7",
     "phantom": "^2.0.10",
     "validator": "^5.2.0",
     "yargs": "^4.6.0"
