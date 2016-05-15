@@ -17,7 +17,7 @@ var logger = require('logops');
 var Application = function() {
   var app = express();
 
-  app.set('port', process.env.PORT || argv.p || argv.port || 3000);
+  app.set('port', process.env.PORT || argv.p || argv.port || 4000);
   app.set('view engine', 'ejs');
   app.set('views', './views');
   app.use(express.static(__dirname + '/../public'));
