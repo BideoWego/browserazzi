@@ -44,4 +44,8 @@ If you wish to run the tests run them with:
 $ npm test
 ```
 
+# TODO [Unreleased]
 
+- Upgrade package versions
+- Refactor to ES6 syntax
+- Add API documentation
