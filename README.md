@@ -46,6 +46,7 @@ $ npm test
 
 ## TODO [Unreleased]
 
+- Restructure application with genr8
 - Upgrade package versions
 - Refactor to ES6 syntax
 - Add API documentation
