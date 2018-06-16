@@ -1,48 +1,38 @@
 {
   "name": "browserazzi",
-  "version": "0.0.1",
-  "description": "A paparazzi for your browser that takes screenshots of websites given a URL",
+  "version": "1.0.0",
+  "description": "A paparazzi for your browser that takes screenshots of websites given a URL.",
   "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
   "scripts": {
-    "test": "jasmine-node spec --verbose",
-    "start": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/BideoWego/browserazzi.git"
+    "url": "git+https://github.com/BideoWego/browserazzi.git"
   },
-  "keywords": [
-    "screenshot"
-  ],
-  "author": "bideowego@gmail.com",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BideoWego/browserazzi/issues"
+  },
+  "homepage": "https://github.com/BideoWego/browserazzi#readme",
   "dependencies": {
-    "body-parser": "^1.15.0",
-    "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.4.1",
-    "cors": "^2.7.1",
-    "dotenv": "^2.0.0",
-    "ejs": "^2.4.1",
-    "express": "^4.13.4",
-    "express-logging": "^1.1.0",
-    "express-session": "^1.13.0",
-    "lodash": "^4.12.0",
-    "logops": "^1.0.0-alpha.7",
-    "phantom": "^2.0.10",
-    "validator": "^5.2.0",
-    "yargs": "^4.6.0"
-  },
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2",
-    "gulp-concat": "^2.6.0",
-    "gulp-cssmin": "^0.1.7",
-    "gulp-filter": "^4.0.0",
-    "gulp-main-bower-files": "^1.3.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.2.0",
-    "gulp-uglify": "^1.5.3",
-    "jasmine-node": "^1.14.5",
-    "request": "^2.72.0"
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "express-flash-messages": "^0.1.1",
+    "express-handlebars": "^3.0.0",
+    "express-method-override-get-post-support": "^1.0.1",
+    "load-helpers": "^1.0.1",
+    "lodash": "^4.17.10",
+    "method-override": "^2.3.10",
+    "morgan": "^1.9.0",
+    "morgan-toolkit": "^1.2.2"
   }
 }
