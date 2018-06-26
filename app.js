@@ -81,10 +81,12 @@ app.use(express.static(`${__dirname}/public`));
 // ----------------------------------------
 // Logging
 // ----------------------------------------
-const morgan = require('morgan');
-const morganToolkit = require('morgan-toolkit')(morgan);
+if (process.env.NODE_ENV !== 'test') {
+  const morgan = require('morgan');
+  const morganToolkit = require('morgan-toolkit')(morgan);
 
-app.use(morganToolkit());
+  app.use(morganToolkit());
+}
 
 
 // ----------------------------------------
