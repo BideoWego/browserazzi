@@ -5,7 +5,7 @@ const app = express();
 // ----------------------------------------
 // App Variables
 // ----------------------------------------
-app.locals.appName = 'My App';
+app.locals.appName = 'Browserazzi';
 
 
 // ----------------------------------------
