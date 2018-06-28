@@ -93,10 +93,12 @@ if (process.env.NODE_ENV !== 'test') {
 // Routes
 // ----------------------------------------
 app.get('/', (req, res) => {
-  req.flash('Hi!');
   res.render('welcome/index');
 });
 
+app.post('/api/v1/screenshot', (req, res) => {
+  res.json({});
+});
 
 // ----------------------------------------
 // Template Engine
@@ -138,6 +140,10 @@ if (require.main === module) {
 // ----------------------------------------
 // Error Handling
 // ----------------------------------------
+app.use((req, res, next) => {
+  res.status(404).render('errors/404');
+});
+
 app.use((err, req, res, next) => {
   if (res.headersSent) {
     return next(err);
