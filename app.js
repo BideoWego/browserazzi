@@ -96,7 +96,7 @@ app.get('/', (req, res) => {
   res.render('welcome/index');
 });
 
-app.post('/api/v1/screenshot', (req, res) => {
+app.post('/api/v1/screenshots', (req, res) => {
   res.json({});
 });
 

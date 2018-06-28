@@ -8,7 +8,7 @@ const app = require('../app');
 describe('App', () => {
   const port = 8888;
   const baseUrl = `http://localhost:${ port }`;
-  const apiUrl = `${ baseUrl }/api/v1/screenshot`;
+  const apiUrl = `${ baseUrl }/api/v1/screenshots`;
   let server;
 
   before(() => {

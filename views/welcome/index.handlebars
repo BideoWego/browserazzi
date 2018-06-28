@@ -1,1 +1,25 @@
-<h1>{{ appName }}</h1>
+<div id="welcome">
+  <header class="page-header text-center">
+    <h1>{{ appName }}</h1>
+
+    <div id="banner" class="text-light bg-cover-image d-flex align-items-center">
+      <h2 class="tagline">A paparazzi for your browser.</h2>
+    </div>
+  </header>
+
+  <main class="container mt-4">
+    <form action="/api/v1/screenshots" method="post">
+      <div class="form-group">
+        <input
+          type="text"
+          name="url"
+          class="form-control"
+          placeholder="Take a screenshot by URL..."
+        />
+      </div>
+      <div class="form-group">
+        <input type="submit" class="btn btn-success btn-lg"/>
+      </div>
+    </form>
+  </main>
+</div>
