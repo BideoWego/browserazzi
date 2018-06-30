@@ -92,13 +92,32 @@ if (process.env.NODE_ENV !== 'test') {
 // ----------------------------------------
 // Routes
 // ----------------------------------------
+const screenshot = require('./services/screenshot');
+
 app.get('/', (req, res) => {
   res.render('welcome/index');
 });
 
-app.post('/api/v1/screenshots', (req, res) => {
-  res.json({});
+app.post('/api/v1/screenshots', async (req, res, next) => {
+  try {
+    const data = await screenshot(req.body.url, req.body);
+    let formattedData = {
+      base64: data,
+      image_src: `data:image/jpeg;base64,${ data }`,
+    }[req.body.format];
+
+    if (!formattedData) {
+      formattedData = new Buffer(data, 'base64');
+      res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+    }
+
+    res.write(formattedData);
+    res.end();
+  } catch (e) {
+    next(e);
+  }
 });
+
 
 // ----------------------------------------
 // Template Engine
