@@ -100,7 +100,14 @@ app.get('/', (req, res) => {
 
 app.post('/api/v1/screenshots', async (req, res, next) => {
   try {
-    const data = await screenshot(req.body.url, req.body);
+    const data = await screenshot({
+      url: req.body.url,
+      width: req.body.width,
+      height: req.body.height,
+      format: req.body.format,
+      quality: req.body.quality,
+      logger: process.env.NODE_ENV === 'test' ? null : console.log
+    });
     let formattedData = {
       base64: data,
       image_src: `data:image/jpeg;base64,${ data }`,

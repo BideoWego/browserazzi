@@ -1,23 +1,29 @@
 const phantom = require('phantom');
 const _ = require('lodash');
 
+let _logger;
 
 const _defaults = {
   width: 880 * 2,
   height: 440 * 2,
   format: 'jpg',
-  quality: '100'
+  quality: '100',
+  logger: null
 };
 
 const _log = (...args) => {
-  if (process.env.NODE_ENV !== 'test') {
-    console.log(...args);
+  if (_logger) {
+    _logger(...args);
   }
 };
 
 
-const Screenshot = async (url, options) => {
+const Screenshot = async (url, options=null) => {
+  options = options ? options : url;
+  url = options.url ? options.url : url;
+
   options = _.merge(_defaults, options);
+  _logger = options.logger;
 
   _log('### Screenshot ###');
 
@@ -41,6 +47,7 @@ const Screenshot = async (url, options) => {
 
   const base64 = await page.renderBase64('jpg');
   _log('  Content rendered to base64');
+  _log();
 
   await page.close();
   await instance.exit();
