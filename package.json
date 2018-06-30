@@ -7,8 +7,9 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "nodemon --exec 'npx mocha test/**/*.js'",
-    "start": "nodemon app.js"
+    "test": "mocha test/**/*.js",
+    "start": "nodemon app.js",
+    "test:dev": "nodemon --exec 'npx mocha test/**/*.js'"
   },
   "repository": {
     "type": "git",
