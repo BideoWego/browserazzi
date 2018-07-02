@@ -1,0 +1,17 @@
+.bg-cover-image {
+  background-attachment: fixed;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#banner {
+  background-image: url("/assets/images/banner.jpg");
+  height: 512px;
+}
+
+#banner .tagline {
+  width: 100%;
+  text-shadow: 2px 2px #333;
+  font-size: 42px;
+}
